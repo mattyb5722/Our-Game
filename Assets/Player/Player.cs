@@ -18,6 +18,13 @@ public class Player : MonoBehaviour
     void Update()
     {
 
+        
+
+    }
+
+    private void FixedUpdate()
+    {
+
         Vector2 position = transform.position;
         float HorizontalInput = Input.GetAxis("Horizontal");
         float VerticalInput = Input.GetAxis("Vertical");
@@ -25,18 +32,7 @@ public class Player : MonoBehaviour
         position.y = position.y + (speedMult * VerticalInput);
         transform.position = position;
 
-    }
-
-    private void FixedUpdate()
-    {
-
-        
-
-        Quaternion rotation = transform.rotation;
-
-        Vector3 MousePosition = Input.mousePosition;
-
-        
+               
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

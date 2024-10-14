@@ -147,8 +147,9 @@ GameObject:
   m_Component:
   - component: {fileID: 501192764530741126}
   - component: {fileID: 25104396552899896}
-  - component: {fileID: 6812156644125238467}
   - component: {fileID: 562622201711963766}
+  - component: {fileID: 6818386900182441364}
+  - component: {fileID: 7982622344534919445}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -186,12 +187,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcba74ed685e6004fbefb58f4b24092e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMult: 0.05
+  speedMult: 0.1
   weapons:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
---- !u!50 &6812156644125238467
+--- !u!58 &562622201711963766
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7970559038839945443}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.6
+--- !u!50 &6818386900182441364
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -218,7 +254,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!58 &562622201711963766
+--- !u!58 &7982622344534919445
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -345,6 +381,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8484129794965756539}
   - component: {fileID: 6100955065288868333}
+  - component: {fileID: 2778974692734611001}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Untagged
@@ -419,3 +456,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2778974692734611001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8977128680667932441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8954966aabff4804bb87835685251ea9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
