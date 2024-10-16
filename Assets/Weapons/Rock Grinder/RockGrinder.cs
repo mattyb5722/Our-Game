@@ -10,6 +10,7 @@ public class RockGrinder : MonoBehaviour
     public float projectileSpeed = 10f;
     private int counter = 0;
     private Vector3 rand;
+    public float rockDurration = 1f;
 
     void Start()
     {
@@ -31,7 +32,7 @@ public class RockGrinder : MonoBehaviour
             Rigidbody2D r = newRock.GetComponent<Rigidbody2D>();
             r.velocity = transform.up * projectileSpeed;
 
-            Destroy(newRock, 1);
+            Destroy(newRock, rockDurration);
             
             counter = 0;
 
