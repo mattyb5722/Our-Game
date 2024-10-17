@@ -1,16 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class MapGenerator : MonoBehaviour
 {
     public TileBase tile;
-    private Tilemap tilemap;
+    public Tilemap defaultTilemap;
+    private Tilemap currentTilemap = null;
 
-    void Start()
+    public float scale = 1f;
+    public float threshold = 0.5f;
+
+    public bool update = true;
+
+    private void FixedUpdate()
     {
-        tilemap = GetComponent<Tilemap>();
-        tilemap.SetTile(Vector3Int.one, tile);
+        if (!update)
+        {
+            return;
+        }
+        print("UPDATE");
+
+        if (currentTilemap != null)
+        {
+            Destroy(currentTilemap.gameObject);
+        }
+
+        currentTilemap = GameObject.Instantiate(defaultTilemap);
+        currentTilemap.transform.parent = transform;
+        currentTilemap.gameObject.SetActive(true);
+
+
+        foreach (var pos in currentTilemap.cellBounds.allPositionsWithin)
+        {
+            float x = (float)pos.x / currentTilemap.cellBounds.size.x * scale;
+            float y = (float)pos.y / currentTilemap.cellBounds.size.y * scale;
+
+            float noise = Mathf.PerlinNoise(x, y);
+
+            if (noise > threshold)
+            {
+                currentTilemap.SetTile(new Vector3Int(pos.x, pos.y, 0), tile);
+            }
+        }
+
+        update = false;
     }
 }
