@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class HelmetWeapon : MonoBehaviour
+public class HelmetWeapon : Weapon
 {
     public float attackSpeed = 100f;
     private int counter = 0;

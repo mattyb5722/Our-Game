@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollisionDetect : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float damage;
+    public float knockbackMult;
+
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        HelmetWeapon helmetWeapon = gameObject.GetComponent<HelmetWeapon>();
-
 
         GameObject colliderGameObject = collider.gameObject;
         Enemy enemy = colliderGameObject.GetComponent<Enemy>();
@@ -18,10 +18,9 @@ public class CollisionDetect : MonoBehaviour
             return;
         }
 
+        Vector3 knockback = (gameObject.transform.position - collider.transform.position).normalized * knockbackMult;
 
-        Vector3 knockback = (gameObject.transform.position - collider.transform.position).normalized;
-
-        Enemy.HitInput hitInput = new Enemy.HitInput(1f, Vector2.zero);
+        Enemy.HitInput hitInput = new Enemy.HitInput(damage, knockback);
         enemy.hit(hitInput);
     }
 }

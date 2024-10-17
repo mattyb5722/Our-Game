@@ -4,7 +4,7 @@ using System.Diagnostics.Tracing;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class MineCarts : MonoBehaviour
+public class MineCarts : Weapon
 {
     public GameObject cart;
     private int counter = 0;
