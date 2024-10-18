@@ -20,20 +20,20 @@ public class MineCarts : Weapon
 
         if (counter == attackSpeed)
         {
-            createProjectile(0);
-            createProjectile(45);
-            createProjectile(90);
-            createProjectile(135);
-            createProjectile(180);
-            createProjectile(225);
-            createProjectile(270);
-            createProjectile(315);
+            CreateProjectile(0);
+            CreateProjectile(45);
+            CreateProjectile(90);
+            CreateProjectile(135);
+            CreateProjectile(180);
+            CreateProjectile(225);
+            CreateProjectile(270);
+            CreateProjectile(315);
 
             counter = 0;
         }
     }
 
-    private void createProjectile(float degrees)
+    private void CreateProjectile(float degrees)
     {
         GameObject newCart = GameObject.Instantiate(cart);
         newCart.transform.position = transform.position;
