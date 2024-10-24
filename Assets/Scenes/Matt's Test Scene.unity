@@ -266,8 +266,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tile: {fileID: 11400000, guid: cfe7fbb7d46ea1e45be9be9a9ee2161d, type: 2}
   defaultTilemap: {fileID: 1808247196}
-  scale: 1
-  threshold: 0.5
+  threshold: 0.75
+  scaleBounds:
+  - 100
+  - 200
   update: 1
 --- !u!1 &296390054
 GameObject:

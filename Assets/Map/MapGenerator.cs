@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UIElements;
+using static UnityEditor.PlayerSettings;
 
 public class MapGenerator : MonoBehaviour
 {
@@ -10,8 +12,8 @@ public class MapGenerator : MonoBehaviour
     public Tilemap defaultTilemap;
     private Tilemap currentTilemap = null;
 
-    public float scale = 1f;
-    public float threshold = 0.5f;
+    public float threshold = 0.75f;
+    public float[] scaleBounds = new float[2];
 
     public bool update = true;
 
@@ -21,28 +23,27 @@ public class MapGenerator : MonoBehaviour
         {
             return;
         }
-        print("UPDATE");
 
         if (currentTilemap != null)
         {
             Destroy(currentTilemap.gameObject);
         }
 
+        float scale = Random.Range(scaleBounds[0], scaleBounds[1]);
+
         currentTilemap = GameObject.Instantiate(defaultTilemap);
         currentTilemap.transform.parent = transform;
         currentTilemap.gameObject.SetActive(true);
 
-
-        foreach (var pos in currentTilemap.cellBounds.allPositionsWithin)
+        foreach (Vector3Int pos in currentTilemap.cellBounds.allPositionsWithin)
         {
-            float x = (float)pos.x / currentTilemap.cellBounds.size.x * scale;
-            float y = (float)pos.y / currentTilemap.cellBounds.size.y * scale;
 
-            float noise = Mathf.PerlinNoise(x, y);
+            float x = (float) (pos.x + ((float)currentTilemap.cellBounds.size.x / 2.0f)) / currentTilemap.cellBounds.size.x * scale;
+            float y = (float) (pos.y + ((float)currentTilemap.cellBounds.size.y / 2.0f)) / currentTilemap.cellBounds.size.y * scale;
 
-            if (noise > threshold)
+            if (Mathf.PerlinNoise(x, y) > threshold)
             {
-                currentTilemap.SetTile(new Vector3Int(pos.x, pos.y, 0), tile);
+                currentTilemap.SetTile(pos, tile);
             }
         }
 
