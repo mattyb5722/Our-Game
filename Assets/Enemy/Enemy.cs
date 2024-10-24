@@ -22,18 +22,24 @@ public abstract class Enemy : MonoBehaviour
         rb.MovePosition(transform.position + (Vector3) movement);
     }
 
-    public void hit(HitInput input)
+    public void hitEnemy(HitEnemyInput input)
     {
         health -= input.damage;
-        transform.position += (Vector3) input.knockBack * speedMult;
+        transform.position += (Vector3)input.knockBack * speedMult;
+
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
+
     }
 
-    public class HitInput
+    public class HitEnemyInput
     {
         public readonly float damage;
         public readonly Vector2 knockBack;
 
-        public HitInput(float damage, Vector2 knockBack)
+        public HitEnemyInput(float damage, Vector2 knockBack)
         {
             this.damage = damage;
             this.knockBack = knockBack;
