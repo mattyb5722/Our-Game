@@ -44,3 +44,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Headlamp
+    uniqueID: 1082558803
+    locked: 0
