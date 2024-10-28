@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 
     public float speedMult = 0.01f;
     public List<Component> weapons = new List<Component>();
+    public float health = 100;
 
     // Start is called before the first frame update
     void Start()
@@ -35,8 +36,18 @@ public class Player : MonoBehaviour
                
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        print(collision.gameObject.name);
+        print(collider.gameObject.name);
+    }
+
+    public void HitPlayer(float damage)
+    {
+        health -= damage;
+        print(health);
+        if (health <= 0)
+        {
+            print("Dead");
+        }
     }
 }

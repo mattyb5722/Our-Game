@@ -6,6 +6,7 @@ public abstract class Enemy : MonoBehaviour
 {
     public float health = 100;
     public float speedMult = 1f;
+    public float damage;
 
     protected GameObject player;
     private Rigidbody2D rb;
@@ -44,5 +45,16 @@ public abstract class Enemy : MonoBehaviour
             this.damage = damage;
             this.knockBack = knockBack;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        GameObject colliderGameObject = collider.gameObject;
+        Player player = colliderGameObject.GetComponent<Player>();
+        if (player = null)
+        {
+            return;
+        }
+        player.HitPlayer(damage);
     }
 }
