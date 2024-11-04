@@ -7,6 +7,8 @@ public abstract class Enemy : MonoBehaviour
     public float health = 100;
     public float speedMult = 1f;
     public float damage;
+    public float attackCooldown;
+    private float lastAttackTime;
 
     protected GameObject player;
     private Rigidbody2D rb;
@@ -47,14 +49,21 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collider)
+    private void OnTriggerStay2D(Collider2D collider)
     {
-        GameObject colliderGameObject = collider.gameObject;
-        Player player = colliderGameObject.GetComponent<Player>();
-        if (player = null)
+        if (Time.time - lastAttackTime < attackCooldown)
         {
             return;
         }
+        GameObject colliderGameObject = collider.gameObject;
+        Player player = colliderGameObject.GetComponent<Player>();
+        if (player == null)
+        {
+            print("player null");
+            return;
+        }
         player.HitPlayer(damage);
+
+        lastAttackTime = Time.time;
     }
 }

@@ -11,13 +11,14 @@ GameObject:
   - component: {fileID: 7367886332570897108}
   - component: {fileID: 95405673943651589}
   - component: {fileID: 3532120003890809819}
+  - component: {fileID: 5281810086668980764}
   m_Layer: 0
   m_Name: HeadlampLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7367886332570897108
 Transform:
   m_ObjectHideFlags: 0
@@ -114,7 +115,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -136,6 +137,21 @@ PolygonCollider2D:
       - {x: 1.6081097, y: 1.5966518}
       - {x: 0.02, y: 1.5999999}
   m_UseDelaunayMesh: 0
+--- !u!114 &5281810086668980764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2999609230987750320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e06268a16874644a47d783847c439f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  knockbackMult: 0
+  attackCooldown: 1
 --- !u!1 &4582014625896823031
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,6 +162,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8456843395838329938}
   - component: {fileID: 3350238829047736264}
+  - component: {fileID: 3244342557675085444}
   m_Layer: 0
   m_Name: Headlamp
   m_TagString: Untagged
@@ -182,6 +199,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lamp: {fileID: 2999609230987750320}
-  attackSpeed: 200
-  durration: 1
+  attackSpeed: 150
+  durration: 2
   transparency: 0.5
+  heightOffest: 1.65
+--- !u!114 &3244342557675085444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4582014625896823031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e06268a16874644a47d783847c439f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  knockbackMult: 0
+  attackCooldown: 1
