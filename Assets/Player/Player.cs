@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour 
 {
 
-    public float speedMult = 0.01f;
+    public float speedMult = 0.0001f;
     public List<Component> weapons = new List<Component>();
     public float health = 100;
 
@@ -29,9 +29,12 @@ public class Player : MonoBehaviour
         Vector2 position = transform.position;
         float HorizontalInput = Input.GetAxis("Horizontal");
         float VerticalInput = Input.GetAxis("Vertical");
-        position.x = position.x + (speedMult * HorizontalInput);
-        position.y = position.y + (speedMult * VerticalInput);
-        transform.position = position;
+        Vector3 HorizontalMove = HorizontalInput * Vector3.right;
+        Vector3 VerticalMove = VerticalInput * Vector3.up;
+        Vector3 Movement = HorizontalMove + VerticalMove;
+        Movement.Normalize();
+        Movement = Movement * speedMult;
+        transform.position += Movement;
 
                
     }
